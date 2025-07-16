@@ -1,0 +1,19 @@
+[package]
+name = "bier-ebpf"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bier-common = { path = "../bier-common" }
+
+aya-ebpf = { workspace = true }
+aya-log-ebpf = { workspace = true }
+network-types = "0.0.8"
+modular-bitfield = "0.12.0"
+
+[build-dependencies]
+which = { workspace = true }
+
+[[bin]]
+name = "bier"
+path = "src/main.rs"

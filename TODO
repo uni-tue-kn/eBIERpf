@@ -1,0 +1,3 @@
+- Still need to check if ethernet checksum needs recalculation
+- MTU check on egress?
+- IGMP signalling?
