@@ -9,6 +9,8 @@ Incoming BIER packets are decpasulated if the corresponding local decap bits are
 The program is configured using a JSON file that sets a static BIER header for a given IPMC address.
 Further, a wireshark dissector for analysing packets is provided in `bier.lua`.
 
+<img src="./img/eBIERpf.png" height=300/>
+
 ## Config
 See `config.json` for an example config.
 `local` defines the local decap bits, `entries` is a dictionary of mappings from IPMC to BIER header.
