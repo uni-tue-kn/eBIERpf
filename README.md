@@ -19,7 +19,7 @@ See `config.json` for an example config.
 
 Once built, you can run the program as follows
 ```
-cargo run --release --config 'target."cfg(all())".runner="sudo -E"' -- --iface lo --config config.json
+cargo run --release --config 'target."cfg(all())".runner="sudo -E"' -- --iface eth0 --config config.json
 ```
 Currently the program can only bind to a single interface for receiving/sending BIER traffic.
 
