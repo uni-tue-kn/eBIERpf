@@ -23,6 +23,8 @@ static mut v6_INGRESS_COUNTER: HashMap<u128, u64> = HashMap::<u128, u64>::with_m
 // Bit for BFER in indexed byte
 static mut LOCAL_BFER: [u8; 32] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
+const BS_OFFSET: usize = 12;
+
 #[inline(always)]
 pub fn process_ingress(ctx: XdpContext) -> Result<u32, ()> {
     let ethhdr: *mut EthHdr = ptr_mut_at(&ctx, 0)?;
@@ -41,7 +43,7 @@ pub fn process_ingress(ctx: XdpContext) -> Result<u32, ()> {
     // Iterate over bytes in BIER bitstring
     let mut bit_match: bool = false;
     for i in 0..32 {
-        let bs_byte: *const u8 = ptr_mut_at(&ctx, EthHdr::LEN + i)?;
+        let bs_byte: *const u8 = ptr_mut_at(&ctx, EthHdr::LEN  + BS_OFFSET + i)?;
         if unsafe {
             (*bs_byte) & LOCAL_BFER[i] > 0
         } {
